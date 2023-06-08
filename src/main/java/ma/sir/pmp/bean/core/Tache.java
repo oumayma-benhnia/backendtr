@@ -129,6 +129,13 @@ public class Tache   extends AuditBusinessObject     {
         return id != null && id.equals(tache.id);
     }
 
+<<<<<<< HEAD
+=======
+    public Projet getProjet() {
+        return projet;
+    }
+
+>>>>>>> 87ebf63 (Initial commit)
     @Override
     public int hashCode() {
         return Objects.hash(id);
