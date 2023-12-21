@@ -15,11 +15,12 @@ import ma.sir.pmp.ws.dto.FactureDto;
 @Component
 public class FactureConverter extends AbstractConverter<Facture, FactureDto, FactureHistory> {
 
-    @Autowired
-    private ComptableConverter comptableConverter ;
+
     @Autowired
     private ProjetConverter projetConverter ;
-    private boolean comptable;
+    @Autowired
+    private ClientConverter clientConverter;
+    private boolean client;
     private boolean projet;
 
     public  FactureConverter(){
@@ -38,23 +39,21 @@ public class FactureConverter extends AbstractConverter<Facture, FactureDto, Fac
                 item.setReference(dto.getReference());
             if(StringUtil.isNotEmpty(dto.getLibelle()))
                 item.setLibelle(dto.getLibelle());
-            if(StringUtil.isNotEmpty(dto.getMontant()))
-                item.setMontant(dto.getMontant());
+            if(StringUtil.isNotEmpty(dto.getPrixUnitaireHT()))
+                item.setPrixUnitaireHT(dto.getPrixUnitaireHT());
             if(StringUtil.isNotEmpty(dto.getDateEmission()))
                 item.setDateEmission(DateUtil.stringEnToDate(dto.getDateEmission()));
             if(StringUtil.isNotEmpty(dto.getDateEcheance()))
                 item.setDateEcheance(DateUtil.stringEnToDate(dto.getDateEcheance()));
-            if(this.comptable && dto.getComptable()!=null)
-                item.setComptable(comptableConverter.toItem(dto.getComptable())) ;
+
 
             if(dto.getProjet() != null && dto.getProjet().getId() != null){
                 item.setProjet(new Projet());
                 item.getProjet().setId(dto.getProjet().getId());
             }
-
-
-
-        return item;
+            if(this.client && dto.getClient()!=null)
+                item.setClient(clientConverter.toItem(dto.getClient())) ;
+            return item;
         }
     }
 
@@ -70,18 +69,19 @@ public class FactureConverter extends AbstractConverter<Facture, FactureDto, Fac
                 dto.setReference(item.getReference());
             if(StringUtil.isNotEmpty(item.getLibelle()))
                 dto.setLibelle(item.getLibelle());
-            if(StringUtil.isNotEmpty(item.getMontant()))
-                dto.setMontant(item.getMontant());
+            if(StringUtil.isNotEmpty(item.getPrixUnitaireHT()))
+                dto.setPrixUnitaireHT(item.getPrixUnitaireHT());
             if(item.getDateEmission()!=null)
                 dto.setDateEmission(DateUtil.dateTimeToString(item.getDateEmission()));
             if(item.getDateEcheance()!=null)
                 dto.setDateEcheance(DateUtil.dateTimeToString(item.getDateEcheance()));
-        if(this.comptable && item.getComptable()!=null) {
-            dto.setComptable(comptableConverter.toDto(item.getComptable())) ;
-        }
+
         if(this.projet && item.getProjet()!=null) {
             dto.setProjet(projetConverter.toDto(item.getProjet())) ;
         }
+            if(this.client && item.getClient()!=null) {
+                dto.setClient(clientConverter.toDto(item.getClient())) ;
+            }
 
 
         return dto;
@@ -90,29 +90,35 @@ public class FactureConverter extends AbstractConverter<Facture, FactureDto, Fac
 
 
     public void initObject(boolean value) {
-        this.comptable = value;
+
         this.projet = value;
+        this.client = value;
     }
 
+    public ClientConverter getClientConverter() {
+        return clientConverter;
+    }
 
-    public ComptableConverter getComptableConverter(){
-        return this.comptableConverter;
+    public void setClientConverter(ClientConverter clientConverter) {
+        this.clientConverter = clientConverter;
     }
-    public void setComptableConverter(ComptableConverter comptableConverter ){
-        this.comptableConverter = comptableConverter;
+
+    public boolean isClient() {
+        return client;
     }
+
+    public void setClient(boolean client) {
+        this.client = client;
+    }
+
     public ProjetConverter getProjetConverter(){
         return this.projetConverter;
     }
     public void setProjetConverter(ProjetConverter projetConverter ){
         this.projetConverter = projetConverter;
     }
-    public boolean  isComptable(){
-        return this.comptable;
-    }
-    public void  setComptable(boolean comptable){
-        this.comptable = comptable;
-    }
+
+
     public boolean  isProjet(){
         return this.projet;
     }

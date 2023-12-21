@@ -96,11 +96,7 @@ public class ChefProjet   extends AuditBusinessObject     {
         this.salaire = salaire;
     }
 
-    @Transient
-    public String getLabel() {
-        label = code;
-        return label;
-    }
+
 
     @Override
     public boolean equals(Object o) {

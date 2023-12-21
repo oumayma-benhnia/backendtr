@@ -22,13 +22,29 @@ public class FactureCriteria extends  BaseCriteria  {
     private LocalDateTime dateEcheanceFrom;
     private LocalDateTime dateEcheanceTo;
 
-    private ComptableCriteria comptable ;
-    private List<ComptableCriteria> comptables ;
     private ProjetCriteria projet ;
     private List<ProjetCriteria> projets ;
+    private ClientCriteria client ;
+    private List<ClientCriteria> clients ;
 
 
     public FactureCriteria(){}
+
+    public ClientCriteria getClient() {
+        return client;
+    }
+
+    public void setClient(ClientCriteria client) {
+        this.client = client;
+    }
+
+    public List<ClientCriteria> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<ClientCriteria> clients) {
+        this.clients = clients;
+    }
 
     public String getReference(){
         return this.reference;
@@ -112,22 +128,8 @@ public class FactureCriteria extends  BaseCriteria  {
         this.dateEcheanceTo = dateEcheanceTo;
     }
 
-    public ComptableCriteria getComptable(){
-        return this.comptable;
-    }
-
-    public void setComptable(ComptableCriteria comptable){
-        this.comptable = comptable;
-    }
-    public List<ComptableCriteria> getComptables(){
-        return this.comptables;
-    }
-
-    public void setComptables(List<ComptableCriteria> comptables){
-        this.comptables = comptables;
-    }
-    public ProjetCriteria getProjet(){
-        return this.projet;
+    public ProjetCriteria getProjet() {
+        return projet;
     }
 
     public void setProjet(ProjetCriteria projet){

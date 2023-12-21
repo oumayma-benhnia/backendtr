@@ -7,6 +7,7 @@ import ma.sir.pmp.dao.criteria.history.FactureHistoryCriteria;
 import ma.sir.pmp.dao.facade.core.FactureDao;
 import ma.sir.pmp.dao.facade.history.FactureHistoryDao;
 import ma.sir.pmp.dao.specification.core.FactureSpecification;
+import ma.sir.pmp.service.facade.admin.ClientAdminService;
 import ma.sir.pmp.service.facade.admin.FactureAdminService;
 import ma.sir.pmp.zynerator.service.AbstractServiceImpl;
 import ma.sir.pmp.zynerator.util.ListUtil;
@@ -30,17 +31,13 @@ FactureHistoryDao> implements FactureAdminService {
     public Facture findByReferenceEntity(Facture t){
         return  dao.findByReference(t.getReference());
     }
-
-    public List<Facture> findByComptableId(Long id){
-        return dao.findByComptableId(id);
-    }
-    public int deleteByComptableId(Long id){
-        return dao.deleteByComptableId(id);
-    }
-    public List<Facture> findByProjetId(Long id){
+     public List<Facture> findByProjetId(Long id){
         return dao.findByProjetId(id);
     }
-    public int deleteByProjetId(Long id){
+    public List<Facture> findByClientId(Long id){
+        return dao.findByClientId(id);
+    }
+     public int deleteByProjetId(Long id){
         return dao.deleteByProjetId(id);
     }
 
@@ -50,10 +47,11 @@ FactureHistoryDao> implements FactureAdminService {
         super.configure(Facture.class,FactureHistory.class, FactureHistoryCriteria.class, FactureSpecification.class);
     }
 
-    @Autowired
-    private ComptableAdminService comptableService ;
+
     @Autowired
     private ProjetAdminService projetService ;
+    @Autowired
+    private ClientAdminService clientService ;
 
     public FactureAdminServiceImpl(FactureDao dao, FactureHistoryDao historyDao) {
         super(dao, historyDao);

@@ -12,10 +12,8 @@ import java.util.List;
 public interface FactureDao extends AbstractRepository<Facture,Long>  {
     Facture findByReference(String reference);
     int deleteByReference(String reference);
-
-    List<Facture> findByComptableId(Long id);
-    int deleteByComptableId(Long id);
-    List<Facture> findByProjetId(Long id);
+     List<Facture> findByProjetId(Long id);
+     List<Facture> findByClientId(Long id);
     int deleteByProjetId(Long id);
 
     @Query("SELECT NEW Facture(item.id,item.libelle) FROM Facture item")

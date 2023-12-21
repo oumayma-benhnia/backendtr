@@ -26,8 +26,7 @@ import java.math.BigDecimal;
 @SequenceGenerator(name="projet_seq",sequenceName="projet_seq",allocationSize=1, initialValue = 1)
 public class Projet   extends AuditBusinessObject     {
 
-    private Long id;
-
+    private Long id ;
     @Column(length = 500)
     private String code;
     @Column(length = 500)

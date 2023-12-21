@@ -14,7 +14,7 @@ import ma.sir.pmp.ws.dto.ChefProjetDto;
 @Component
 public class ChefProjetConverter extends AbstractConverter<ChefProjet, ChefProjetDto, ChefProjetHistory> {
 
-
+private boolean absence;
     public  ChefProjetConverter(){
         super(ChefProjet.class, ChefProjetDto.class, ChefProjetHistory.class);
     }
@@ -71,6 +71,13 @@ public class ChefProjetConverter extends AbstractConverter<ChefProjet, ChefProje
         }
     }
 
+    public boolean isAbsence() {
+        return absence;
+    }
+
+    public void setAbsence(boolean absence) {
+        this.absence = absence;
+    }
 
     public void initObject(boolean value) {
     }

@@ -3,12 +3,14 @@ package  ma.sir.pmp.ws.facade.admin;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import ma.sir.pmp.bean.core.Absence;
 import ma.sir.pmp.bean.core.Projet;
 import ma.sir.pmp.bean.history.ProjetHistory;
 import ma.sir.pmp.dao.criteria.core.ProjetCriteria;
 import ma.sir.pmp.dao.criteria.history.ProjetHistoryCriteria;
 import ma.sir.pmp.service.facade.admin.ProjetAdminService;
 import ma.sir.pmp.ws.converter.ProjetConverter;
+import ma.sir.pmp.ws.dto.AbsenceDto;
 import ma.sir.pmp.ws.dto.ProjetDto;
 import ma.sir.pmp.zynerator.controller.AbstractController;
 import ma.sir.pmp.zynerator.dto.AuditEntityDto;
@@ -177,6 +179,7 @@ public class ProjetRestAdmin  extends AbstractController<Projet, ProjetDto, Proj
     public ResponseEntity<Integer> getHistoryDataSize(@RequestBody ProjetHistoryCriteria criteria) throws Exception {
         return super.getHistoryDataSize(criteria);
     }
+
     public ProjetRestAdmin (ProjetAdminService service, ProjetConverter converter) {
         super(service, converter);
     }

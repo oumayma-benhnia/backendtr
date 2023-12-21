@@ -94,20 +94,15 @@ public class FactureRestAdmin  extends AbstractController<Facture, FactureDto, F
      }
 
 
-    @ApiOperation("find by comptable id")
-    @GetMapping("comptable/id/{id}")
-    public List<Facture> findByComptableId(@PathVariable Long id){
-        return service.findByComptableId(id);
-    }
-    @ApiOperation("delete by comptable id")
-    @DeleteMapping("comptable/id/{id}")
-    public int deleteByComptableId(@PathVariable Long id){
-        return service.deleteByComptableId(id);
-    }
+
     @ApiOperation("find by projet id")
     @GetMapping("projet/id/{id}")
     public List<Facture> findByProjetId(@PathVariable Long id){
         return service.findByProjetId(id);
+    } @ApiOperation("find by client id")
+    @GetMapping("client/id/{id}")
+    public List<Facture> findByClientId(@PathVariable Long id){
+        return service.findByClientId(id);
     }
     @ApiOperation("delete by projet id")
     @DeleteMapping("projet/id/{id}")

@@ -17,6 +17,7 @@ public class MaterielConverter extends AbstractConverter<Materiel, MaterielDto, 
     @Autowired
     private CategorieMaterielConverter categorieMaterielConverter ;
     private boolean categorieMateriel;
+    private boolean achat ;
 
     public  MaterielConverter(){
         super(Materiel.class, MaterielDto.class, MaterielHistory.class);
@@ -77,6 +78,13 @@ public class MaterielConverter extends AbstractConverter<Materiel, MaterielDto, 
         this.categorieMateriel = value;
     }
 
+    public boolean isAchat() {
+        return achat;
+    }
+
+    public void setAchat(boolean achat) {
+        this.achat = achat;
+    }
 
     public CategorieMaterielConverter getCategorieMaterielConverter(){
         return this.categorieMaterielConverter;

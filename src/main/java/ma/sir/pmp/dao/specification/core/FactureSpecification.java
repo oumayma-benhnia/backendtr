@@ -21,12 +21,12 @@ public class FactureSpecification extends  AbstractSpecification<FactureCriteria
         addPredicateBigDecimal("montant", criteria.getMontant(), criteria.getMontantMin(), criteria.getMontantMax());
         addPredicate("dateEmission", criteria.getDateEmission(), criteria.getDateEmissionFrom(), criteria.getDateEmissionTo());
         addPredicate("dateEcheance", criteria.getDateEcheance(), criteria.getDateEcheanceFrom(), criteria.getDateEcheanceTo());
-        addPredicateFk("comptable","id", criteria.getComptable()==null?null:criteria.getComptable().getId());
-        addPredicateFk("comptable","id", criteria.getComptables());
-        addPredicateFk("comptable","code", criteria.getComptable()==null?null:criteria.getComptable().getCode());
         addPredicateFk("projet","id", criteria.getProjet()==null?null:criteria.getProjet().getId());
         addPredicateFk("projet","id", criteria.getProjets());
         addPredicateFk("projet","code", criteria.getProjet()==null?null:criteria.getProjet().getCode());
+        addPredicateFk("client","id", criteria.getClient()==null?null:criteria.getClient().getId());
+        addPredicateFk("client","id", criteria.getClients());
+        addPredicateFk("client","code", criteria.getClients()==null?null:criteria.getClient().getCode());
     }
 
     public FactureSpecification(FactureCriteria criteria) {

@@ -22,7 +22,6 @@ import java.util.Objects;
 public class Declaration   extends AuditBusinessObject     {
 
     private Long id;
-
     @Column(length = 500)
     private String reference;
     @Column(length = 500)

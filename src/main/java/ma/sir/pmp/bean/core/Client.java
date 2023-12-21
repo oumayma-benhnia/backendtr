@@ -104,11 +104,7 @@ public class Client   extends AuditBusinessObject     {
         this.tele = tele;
     }
 
-    @Transient
-    public String getLabel() {
-        label = code;
-        return label;
-    }
+
 
     @Override
     public boolean equals(Object o) {

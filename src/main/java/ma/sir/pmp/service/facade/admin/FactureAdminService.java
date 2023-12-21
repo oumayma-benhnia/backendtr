@@ -9,10 +9,12 @@ import ma.sir.pmp.zynerator.service.IService;
 
 public interface FactureAdminService extends  IService<Facture,FactureCriteria, FactureHistoryCriteria>  {
 
-    List<Facture> findByComptableId(Long id);
-    int deleteByComptableId(Long id);
+
     List<Facture> findByProjetId(Long id);
+    List<Facture> findByClientId(Long id);
+
     int deleteByProjetId(Long id);
+
 
 
 

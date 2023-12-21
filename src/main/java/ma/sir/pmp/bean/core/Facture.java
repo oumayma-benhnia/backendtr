@@ -31,11 +31,11 @@ public class Facture   extends AuditBusinessObject     {
     private String reference;
     @Column(length = 500)
     private String libelle;
-    private BigDecimal montant = BigDecimal.ZERO;
+    private BigDecimal prixUnitaireHT = BigDecimal.ZERO;
     private LocalDateTime dateEmission ;
     private LocalDateTime dateEcheance ;
 
-    private Comptable comptable ;
+    private Client client ;
     
     private Projet projet ;
     
@@ -74,12 +74,15 @@ public class Facture   extends AuditBusinessObject     {
     public void setLibelle(String libelle){
         this.libelle = libelle;
     }
-    public BigDecimal getMontant(){
-        return this.montant;
+
+    public BigDecimal getPrixUnitaireHT() {
+        return prixUnitaireHT;
     }
-    public void setMontant(BigDecimal montant){
-        this.montant = montant;
+
+    public void setPrixUnitaireHT(BigDecimal prixUnitaireHT) {
+        this.prixUnitaireHT = prixUnitaireHT;
     }
+
     public LocalDateTime getDateEmission(){
         return this.dateEmission;
     }
@@ -93,11 +96,11 @@ public class Facture   extends AuditBusinessObject     {
         this.dateEcheance = dateEcheance;
     }
     @ManyToOne(fetch = FetchType.LAZY)
-    public Comptable getComptable(){
-        return this.comptable;
+    public Client getClient(){
+        return this.client;
     }
-    public void setComptable(Comptable comptable){
-        this.comptable = comptable;
+    public void setClient(Client client){
+        this.client = client;
     }
     @ManyToOne(fetch = FetchType.LAZY)
     public Projet getProjet(){

@@ -13,18 +13,16 @@ public class CategorieMaterielHistory extends HistBusinessObject  {
 
 
     public CategorieMaterielHistory() {
-    super();
-    }
+        super();}
 
     public CategorieMaterielHistory (Long id) {
-    super(id);
+        super(id);
     }
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="categorie_materiel_seq")
     public Long getId() {
-    return id;
+        return id;
     }
 }
-

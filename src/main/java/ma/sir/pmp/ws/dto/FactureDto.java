@@ -16,11 +16,11 @@ public class FactureDto  extends AuditBaseDto {
 
     private String reference  ;
     private String libelle  ;
-    private BigDecimal montant  ;
+    private BigDecimal prixUnitaireHT  ;
     private String dateEmission ;
     private String dateEcheance ;
 
-    private ComptableDto comptable ;
+    private ClientDto client ;
     private ProjetDto projet ;
 
 
@@ -46,13 +46,21 @@ public class FactureDto  extends AuditBaseDto {
     public void setLibelle(String libelle){
         this.libelle = libelle;
     }
-
     @Log
-    public BigDecimal getMontant(){
-        return this.montant;
+    public BigDecimal getPrixUnitaireHT() {
+        return prixUnitaireHT;
     }
-    public void setMontant(BigDecimal montant){
-        this.montant = montant;
+
+    public void setPrixUnitaireHT(BigDecimal prixUnitaireHT) {
+        this.prixUnitaireHT = prixUnitaireHT;
+    }
+
+    public ClientDto getClient() {
+        return client;
+    }
+
+    public void setClient(ClientDto client) {
+        this.client = client;
     }
 
     @Log
@@ -71,15 +79,6 @@ public class FactureDto  extends AuditBaseDto {
     }
     public void setDateEcheance(String dateEcheance){
         this.dateEcheance = dateEcheance;
-    }
-
-
-    public ComptableDto getComptable(){
-        return this.comptable;
-    }
-
-    public void setComptable(ComptableDto comptable){
-        this.comptable = comptable;
     }
     public ProjetDto getProjet(){
         return this.projet;
